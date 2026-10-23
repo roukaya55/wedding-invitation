@@ -40,6 +40,10 @@
 
       // verse
       verse: "With grateful hearts and faith in God's plan,<br>we invite you to celebrate the union of",
+      familyGroom: 'Ghassa Family',
+      familyBride: 'Mazloum Family',
+      inviteLine: '',
+
       days: 'Days',
       hours: 'Hours',
       minutes: 'Minutes',
@@ -49,7 +53,7 @@
       saveDate: 'save the date',
       calMonth: 'December 2026',
       sun: 'Sun', mon: 'Mon', tue: 'Tue', wed: 'Wed', thu: 'Thu', fri: 'Fri', sat: 'Sat',
-      eightPm: "Eight o'clock in the evening",
+      eightPm: "Seven o'clock in the evening",
 
       // details
       details: 'The Details',
@@ -57,7 +61,7 @@
       venue: 'Roche Dorée',
       venueSub: 'Mejdlaya, North Lebanon',
       openMaps: 'Open in Google Maps',
-      detailsP1: "Doors open at eight in the evening at Roche Dorée. Dinner is served after the couple's first dance, so a punctual arrival means you won't miss a moment of the celebration.",
+      detailsP1: "Doors open at seven in the evening at Roche Dorée. Dinner is served after the couple's first dance, so a punctual arrival means you won't miss a moment of the celebration.",
       noteAlcohol: "This is an alcohol-free celebration — thank you for honoring the couple's wishes.",
       noteKids: 'We love your little ones, but this evening is adults-only.',
 
@@ -126,7 +130,10 @@
       envelopeInstruction: 'اضغط على المغلّف لفتح دعوتك',
 
       // verse
-      verse: 'وَ مِنْ آياتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْواجاً لِتَسْكُنُوا إِلَيْها وَ جَعَلَ بَيْنَكُمْ مَوَدَّةً وَ رَحْمَةً إِنَّ فِي ذلِكَ لَآياتٍ لِقَوْمٍ يَتَفَكَّرُونَ <br>يسعدنا أن ندعوكم للاحتفال بزفاف',
+      verse: 'وَ مِنْ آياتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْواجاً لِتَسْكُنُوا إِلَيْها وَ جَعَلَ بَيْنَكُمْ مَوَدَّةً وَ رَحْمَةً إِنَّ فِي ذلِكَ لَآياتٍ لِقَوْمٍ يَتَفَكَّرُونَ',
+      familyGroom: 'آل غصّه',
+      familyBride: 'آل مظلوم',
+      inviteLine: 'يسعدنا أن ندعوكم للاحتفال بزفاف',
       days: 'أيام',
       hours: 'ساعات',
       minutes: 'دقائق',
