@@ -159,6 +159,31 @@ document.addEventListener('wedding:langchange', updateCountdown);
 // ============================================
 // STATE MANAGEMENT & RSVP BACKEND LOGIC
 // ============================================
+function toInt(value, fallback = 0) {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? Math.trunc(parsed) : fallback;
+}
+
+function toOptionalInt(value) {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? Math.trunc(parsed) : null;
+}
+
+function toBool(value) {
+    if (typeof value === 'boolean') return value;
+    if (typeof value === 'string') {
+        const normalized = value.trim().toLowerCase();
+        if (['true', '1', 'yes', 'y'].includes(normalized)) return true;
+        if (['false', '0', 'no', 'n', ''].includes(normalized)) return false;
+    }
+    return Boolean(value);
+}
+
+function getToken() {
+    const token = new URLSearchParams(window.location.search).get('id');
+    return token ? token.trim() : '';
+}
+
 let currentGuest = {
     name: "",
     nameAr: "",       // optional: Arabic spelling of the guest name, if the sheet provides one
@@ -264,11 +289,10 @@ function renderDynamic() {
 
 document.addEventListener('wedding:langchange', renderDynamic);
 
-window.addEventListener('DOMContentLoaded', async () => {
+async function initInviteState() {
     renderDynamic();
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('id');
+    const token = getToken();
 
     if (!token) {
         setMessage('invalidLink', 'error');
@@ -278,20 +302,20 @@ window.addEventListener('DOMContentLoaded', async () => {
     setMessage('readingLink', 'info');
 
     try {
-        const response = await fetch(`${API_URL}?type=getGuestByToken&token=${encodeURIComponent(token.trim())}`);
+        const response = await fetch(`${API_URL}?type=getGuestByToken&token=${encodeURIComponent(token)}`);
         const data = await response.json();
 
         if (data.found) {
             setMessage(null);
 
             currentGuest = {
-                name: data.name,
-                nameAr: data.nameAr || '',
-                seats: data.confirmedSeats,
-                maxSeats: data.maxSeats || 1,
-                status: data.status || '',
-                hasResponded: data.hasResponded || false,
-                rowIndex: data.rowIndex
+                name: String(data.name || ''),
+                nameAr: String(data.nameAr || ''),
+                seats: Math.max(toInt(data.confirmedSeats, 0), 0),
+                maxSeats: Math.max(toInt(data.maxSeats, 1), 1),
+                status: String(data.status || ''),
+                hasResponded: toBool(data.hasResponded),
+                rowIndex: toOptionalInt(data.rowIndex)
             };
 
             if (welcomeText) welcomeText.textContent = displayName();
@@ -299,9 +323,9 @@ window.addEventListener('DOMContentLoaded', async () => {
             if (rsvpSection) rsvpSection.classList.remove('hidden');
             updateSeatAdjustmentButtons();
 
-            if (data.hasResponded) {
-                if (statusBadgeContainer) statusBadgeContainer.innerHTML = showStatusBadge(data.status);
-                setMessage('alreadyResponded', 'info', { status: data.status });
+            if (currentGuest.hasResponded) {
+                if (statusBadgeContainer) statusBadgeContainer.innerHTML = showStatusBadge(currentGuest.status);
+                setMessage('alreadyResponded', 'info', { status: currentGuest.status });
             } else {
                 if (statusBadgeContainer) statusBadgeContainer.innerHTML = '';
                 setMessage('confirmPrompt');
@@ -315,7 +339,13 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.error('Initial execution fetching loop error trace:', error);
         setMessage('networkFail', 'error');
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', initInviteState, { once: true });
+} else {
+    initInviteState();
+}
 
 if (btnDecreaseSeat) {
     btnDecreaseSeat.addEventListener('click', () => {
@@ -337,8 +367,9 @@ if (btnIncreaseSeat) {
 
 async function fetchSavedStatus() {
     // Ask the sheet what it actually has saved for this guest
-    const token = new URLSearchParams(window.location.search).get('id');
-    const res = await fetch(`${API_URL}?type=getGuestByToken&token=${encodeURIComponent(token.trim())}`);
+    const token = getToken();
+    if (!token) return null;
+    const res = await fetch(`${API_URL}?type=getGuestByToken&token=${encodeURIComponent(token)}`);
     const data = await res.json();
     return data.found ? data : null;
 }
@@ -368,8 +399,9 @@ async function submitRSVP(status) {
     }
 
     const seatsParam = status === 'Attending' ? Math.max(currentGuest.seats, 1) : 0;
+    const rowIndexParam = currentGuest.rowIndex == null ? '' : `&rowIndex=${currentGuest.rowIndex}`;
     // NOTE: always send the original (sheet) name, never the Arabic display name
-    const postUrl = `${API_URL}?type=submit&name=${encodeURIComponent(currentGuest.name)}&seats=${seatsParam}&status=${encodeURIComponent(status)}&rowIndex=${currentGuest.rowIndex}`;
+    const postUrl = `${API_URL}?type=submit&name=${encodeURIComponent(currentGuest.name)}&seats=${seatsParam}&status=${encodeURIComponent(status)}${rowIndexParam}`;
 
     let saved = false;
 
