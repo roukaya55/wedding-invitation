@@ -362,7 +362,7 @@ html[lang="ar"] .insert-names { line-height: 1.3; }
 
 
 /* ============ Family names – ornamental, Arabic only ============ */
-:root { --olive: #4E6B4C; }
+:root { --amber: #F7E7CE; }
 .family-names { display: none; }
 html[lang="ar"] .family-names {
   display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -378,7 +378,7 @@ html[lang="ar"] .family-names {
 .family-name--first  { justify-self: end; }
 .family-name--second { justify-self: start; }
 .family-name {
-  font-family: var(--font-script); font-weight: 700; color: var(--olive);
+  font-family: var(--font-script); font-weight: 700; color: var(--amber);
   font-size: clamp(28px, 8.6vw, 40px); line-height: 1.6; white-space: nowrap;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
 }
