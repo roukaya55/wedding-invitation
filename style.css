@@ -306,7 +306,7 @@ html[lang="ar"] .hero-copy { font-size: 18px; line-height: 1.9; max-width: 330px
 html[lang="ar"] .btn-start { font-size: 18px; }
 
 html[lang="ar"] .invitation-text { font-size: 24px; line-height: 1.95; }
-html[lang="ar"] .couple-full-names { font-size: 46px; line-height: 1.4; }
+html[lang="ar"] .couple-full-names { font-size: clamp(60px, 18vw, 80px); line-height: 1.35; }
 html[lang="ar"] .couple-full-names .script,
 html[lang="ar"] .closing-names .script { font-size: .85em; }
 html[lang="ar"] .count-unit label { font-size: 14px; }
@@ -370,14 +370,21 @@ html[lang="ar"] .family-names {
 }
 .fn-orn { width: min(86%, 290px); height: auto; color: var(--amber); }
 .fn-orn--bottom { transform: scaleY(-1); }
-.family-row { display: flex; align-items: center; justify-content: center; gap: clamp(10px, 4vw, 22px); width: 100%; padding: 4px 0; }
+.family-row {
+  display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  align-items: center; column-gap: clamp(12px, 4vw, 20px); width: 100%; padding: 2px 0;
+}
+/* each name hugs the centre divider, so the pair is perfectly symmetric whatever the name lengths */
+.family-name--first  { justify-self: end; }
+.family-name--second { justify-self: start; }
 .family-name {
   font-family: var(--font-script); font-weight: 700; color: var(--olive);
-  font-size: clamp(30px, 9.4vw, 42px); line-height: 1.7; white-space: nowrap;
+  font-size: clamp(28px, 8.6vw, 40px); line-height: 1.6; white-space: nowrap;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
 }
 html[lang="ar"] .couple-full-names > span:not(.script) {
-  font-family: var(--font-script); font-weight: 700;
+  font-family: var(--font-script); font-weight: 700; line-height: 1.5;
 }
-.family-sep { width: 20px; height: 88px; flex: none; color: var(--amber); }
+html[lang="ar"] .couple-full-names .script { font-size: .6em; line-height: 1.1; }
+.family-sep { width: 16px; height: 64px; flex: none; color: var(--amber); }
 .invite-line:empty { display: none; }
