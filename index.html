@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- English: Cormorant Garamond / Parisienne / Jost.  Arabic: Amiri / Aref Ruqaa / Tajawal (only downloaded when Arabic text is shown) -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Parisienne&family=Jost:wght@300;400;500;600&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=19">
 <!-- Sets lang + dir (en/ar) before the page paints, based on saved choice, ?lang=, or browser language -->
 <script src="i18n.js?v=4"></script>
 </head>
@@ -87,21 +87,15 @@
         With grateful hearts and faith in God's plan,<br>we invite you to celebrate the union of
       </p>
 
-      <!-- Arabic only: family names panel (hidden in English via CSS) -->
+      <!-- Arabic only: ornamental family names (hidden in English via CSS) -->
       <div class="family-names">
-        <svg class="fn-corner fn-tl" viewBox="0 0 40 40" aria-hidden="true"><use href="#family-corner"/></svg>
-        <svg class="fn-corner fn-tr" viewBox="0 0 40 40" aria-hidden="true"><use href="#family-corner"/></svg>
-        <svg class="fn-corner fn-bl" viewBox="0 0 40 40" aria-hidden="true"><use href="#family-corner"/></svg>
-        <svg class="fn-corner fn-br" viewBox="0 0 40 40" aria-hidden="true"><use href="#family-corner"/></svg>
-        <div class="family-col">
+        <svg class="fn-orn fn-orn--top" viewBox="0 0 300 30" aria-hidden="true"><use href="#arab-orn"/></svg>
+        <div class="family-row">
           <span class="family-name" data-i18n="familyGroom">آل غصّه</span>
-          <svg viewBox="0 0 200 24" aria-hidden="true"><use href="#leaf-divider"/></svg>
-        </div>
-        <svg class="family-sep" viewBox="0 0 24 100" aria-hidden="true"><use href="#family-sep"/></svg>
-        <div class="family-col">
+          <svg class="family-sep" viewBox="0 0 24 100" aria-hidden="true"><use href="#family-sep"/></svg>
           <span class="family-name" data-i18n="familyBride">آل مظلوم</span>
-          <svg viewBox="0 0 200 24" aria-hidden="true"><use href="#leaf-divider"/></svg>
         </div>
+        <svg class="fn-orn fn-orn--bottom" viewBox="0 0 300 30" aria-hidden="true"><use href="#arab-orn"/></svg>
       </div>
 
       <p class="invitation-text invite-line" data-i18n-html="inviteLine"></p>
@@ -262,17 +256,30 @@
       <circle cx="60" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="1.1"/>
       <circle cx="60" cy="14" r="2.5" fill="none" stroke="currentColor" stroke-width="0.8"/>
     </g>
-    <g id="family-corner">
-      <path d="M3 38 C3 16 16 3 38 3" fill="none" stroke="currentColor" stroke-width="1.2"/>
-      <path d="M9 38 C9 22 20 9 38 9" fill="none" stroke="currentColor" stroke-width="0.7" opacity=".6"/>
-      <path d="M12 14 C14 8 20 6 24 7 C22 13 17 16 12 14 Z" fill="none" stroke="currentColor" stroke-width="1"/>
-      <circle cx="6" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="1"/>
+    <g id="arab-half">
+      <path d="M12 15 H88" stroke="currentColor" stroke-width="1"/>
+      <path d="M8 15 L12 11 L16 15 L12 19 Z" fill="currentColor"/>
+      <path d="M88 15 H104 C116 15 118 5 130 7 C138 8 138 18 131 17 C126 16 127 12 131 12" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M104 15 C108 24 118 26 124 22 C118 20 112 18 104 15 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M96 15 C98 8 104 5 110 6 C108 11 103 14 96 15 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M140 15 H147" stroke="currentColor" stroke-width="1"/>
+    </g>
+    <g id="arab-orn">
+      <use href="#arab-half"/>
+      <g transform="translate(300 0) scale(-1 1)"><use href="#arab-half"/></g>
+      <!-- central palmette -->
+      <path d="M150 2 C145 8 141 11 141 16 C141 20 145 22 150 28 C155 22 159 20 159 16 C159 11 155 8 150 2 Z" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M150 26 C142 26 136 21 134 13 C141 13 147 17 150 26 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M150 26 C158 26 164 21 166 13 C159 13 153 17 150 26 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="150" cy="15" r="2" fill="currentColor"/>
     </g>
     <g id="family-sep">
-      <path d="M12 8 V36 M12 64 V92" stroke="currentColor" stroke-width="1"/>
+      <path d="M12 8 V34 M12 66 V92" stroke="currentColor" stroke-width="1"/>
       <path d="M12 0 L14.5 4 L12 8 L9.5 4 Z M12 92 L14.5 96 L12 100 L9.5 96 Z" fill="currentColor"/>
-      <path d="M12 50 C8 44 4 42 3 38 C8 38 11 41 12 44 C13 41 16 38 21 38 C20 42 16 44 12 50 C16 56 20 58 21 62 C16 62 13 59 12 56 C11 59 8 62 3 62 C4 58 8 56 12 50 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
-      <circle cx="12" cy="50" r="1.6" fill="currentColor"/>
+      <!-- eight-pointed star (khatim) -->
+      <path d="M12 38 L22 50 L12 62 L2 50 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M4.5 42.5 H19.5 V57.5 H4.5 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+      <circle cx="12" cy="50" r="2" fill="currentColor"/>
     </g>
     <g id="leaf-divider">
       <path d="M0 12 H80" stroke="currentColor" stroke-width="1"/>
