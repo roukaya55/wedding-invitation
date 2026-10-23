@@ -376,5 +376,8 @@ html[lang="ar"] .family-names {
   font-size: clamp(30px, 9.4vw, 42px); line-height: 1.7; white-space: nowrap;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
 }
+html[lang="ar"] .couple-full-names > span:not(.script) {
+  font-family: var(--font-script); font-weight: 700;
+}
 .family-sep { width: 20px; height: 88px; flex: none; color: var(--amber); }
 .invite-line:empty { display: none; }
