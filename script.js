@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.scrollTo(0, 0);
                     initScrollObserver(); // Initialize animations for revealed content
                 }, 500);
-            }, 2500);
+            }, 1500);
         };
 
         envelopeWrapper.addEventListener('click', openEnvelope);
