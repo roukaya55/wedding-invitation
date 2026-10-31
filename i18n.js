@@ -62,8 +62,8 @@
       venueSub: 'Mejdlaya, North Lebanon',
       openMaps: 'Open in Google Maps',
       detailsP1: "Doors open at seven in the evening at Roche Dorée. Dinner is served after the couple's first dance, so a punctual arrival means you won't miss a moment of the celebration.",
-      noteAlcohol: "This is an alcohol-free celebration — thank you for honoring the couple's wishes.",
-      noteKids: 'We love your little ones, but this evening is adults-only.',
+      noteAlcohol: 'This is an alcohol-free celebration.',
+      noteKids: 'Home is the children’s shelter, but you are the joy in our nights.',
 
       // rsvp (static)
       kindlyRespond: 'kindly respond',
@@ -131,8 +131,8 @@
 
       // verse
       verse: 'وَ مِنْ آياتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْواجاً لِتَسْكُنُوا إِلَيْها وَ جَعَلَ بَيْنَكُمْ مَوَدَّةً وَ رَحْمَةً إِنَّ فِي ذلِكَ لَآياتٍ لِقَوْمٍ يَتَفَكَّرُونَ',
-      familyGroom: 'آل مصطفى غصّه',
-      familyBride: 'آل هيثم مظلوم',
+      familyGroom: 'عائلة مصطفى غصّه',
+      familyBride: 'عائلة هيثم مظلوم',
       inviteLine: 'يسعدنا أن ندعوكم للاحتفال بزفاف',
       days: 'أيام',
       hours: 'ساعات',

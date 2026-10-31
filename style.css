@@ -376,15 +376,16 @@ html[lang="ar"] .family-names {
 .fn-orn--bottom { transform: scaleY(-1); }
 .family-row {
   display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
-  align-items: center; column-gap: 12px; padding: 2px 0; direction: rtl;
+  align-items: center; column-gap: min(12px, 2cqw); padding: 2px 0; direction: rtl;
 }
 /* row is forced RTL: groom (right) and bride (left) both sit right against the centre divider */
 .family-name--first  { grid-column: 1; justify-self: end;   text-align: left; }
 .family-name--second { grid-column: 3; justify-self: start; text-align: right; }
 .family-sep { grid-column: 2; }
 .family-name {
-  font-family: var(--font-script); font-weight: 700; color: var(--amber);
-  font-size: clamp(20px, 8cqw, 36px);   /* fits both names side by side on small phones */
+  align-self: baseline;
+  font-family: 'Noto Nastaliq Urdu', var(--font-script), serif; font-weight: 700; color: var(--amber);
+  font-size: clamp(13px, 6cqw, 28px);   /* fits both names side by side on small phones */
   line-height: 1.6; white-space: nowrap;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
 }
