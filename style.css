@@ -362,36 +362,63 @@ html[lang="ar"] .lang-toggle { font-size: 16px; }
 html[lang="ar"] .insert-names { line-height: 1.3; }
 
 
-/* ============ Family names – ornamental, Arabic only ============ */
+/* ============ Family names – ornamental, shown in both languages ============ */
 :root { --amber: #d9b27a; }
-.family-names { display: none; }
-html[lang="ar"] .family-names {
+.family-names {
   display: flex; flex-direction: column; align-items: center; gap: 6px;
   width: 100%; margin: 8px auto 22px; color: var(--amber);
-  container-type: inline-size;           /* lets the names scale with the card width */
+  container-type: inline-size;
 }
 /* ornaments and the names row all share ONE width, so the frame lines up with the text */
 .fn-orn, .family-row { width: min(100%, 440px); }
 .fn-orn { height: auto; color: var(--amber); }
 .fn-orn--bottom { transform: scaleY(-1); }
 .family-row {
-  display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
-  align-items: center; column-gap: min(12px, 2cqw); padding: 2px 0; direction: rtl;
+  display: flex; flex-wrap: nowrap; align-items: center;
+  column-gap: min(6px, 1.5cqw); padding: 2px 0; direction: ltr;
 }
-/* row is forced RTL: groom (right) and bride (left) both sit right against the centre divider */
-.family-name--first  { grid-column: 1; justify-self: end;   text-align: left; }
-.family-name--second { grid-column: 3; justify-self: start; text-align: right; }
-.family-sep { grid-column: 2; }
+/* row is left-to-right in English and right-to-left in Arabic */
+.family-name--first  { text-align: right; }
+.family-name--second { text-align: left; }
+.family-sep { width: 12px; height: 48px; flex: none; color: var(--amber); }
 .family-name {
-  align-self: baseline;
-  font-family: 'Noto Nastaliq Urdu', var(--font-script), serif; font-weight: 700; color: var(--amber);
-  font-size: clamp(13px, 6cqw, 28px);   /* fits both names side by side on small phones */
-  line-height: 1.6; white-space: nowrap;
+  align-self: center; flex: 1 1 0; min-width: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; color: var(--amber);
+  font-size: clamp(11px, 4.2cqw, 18px);
+  line-height: 1.3; white-space: nowrap;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
+  letter-spacing: 0.01em;
+}
+html[lang="ar"] .family-row { direction: rtl; }
+html[lang="ar"] .family-name--first { text-align: left; }
+html[lang="ar"] .family-name--second { text-align: right; }
+html[lang="ar"] .family-name {
+  font-family: 'Noto Nastaliq Urdu', var(--font-script), serif; font-weight: 700;
+  font-size: clamp(13px, 6cqw, 28px);
+}
+
+@media (max-width: 480px) {
+  .family-names {
+    width: calc(100vw - 24px);
+    gap: 4px;
+    margin: 6px 0 16px calc((100% - (100vw - 24px)) / 2);
+  }
+  .family-row {
+    column-gap: 4px;
+  }
+  html[lang="en"] .family-name {
+    font-size: clamp(10px, 3.8vw, 17px);
+  }
+  .family-sep {
+    width: 10px;
+    height: 38px;
+  }
+  html[lang="ar"] .family-name {
+    font-size: clamp(12px, 5vw, 22px);
+  }
 }
 html[lang="ar"] .couple-full-names > span:not(.script) {
   font-family: var(--font-script); font-weight: 700; line-height: 1.5;
 }
 html[lang="ar"] .couple-full-names .script { font-size: .6em; line-height: 1.1; }
-.family-sep { width: 16px; height: 64px; flex: none; color: var(--amber); }
 .invite-line:empty { display: none; }

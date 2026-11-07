@@ -40,8 +40,8 @@
 
       // verse
       verse: "With grateful hearts and faith in God's plan,<br>we invite you to celebrate the union of",
-      familyGroom: 'Ghassa Family',
-      familyBride: 'Mazloum Family',
+      familyGroom: "Mostafa Ghassa's Family",
+      familyBride: "Haytham Mazloum's Family",
       inviteLine: '',
 
       days: 'Days',
@@ -68,7 +68,7 @@
       // rsvp (static)
       kindlyRespond: 'kindly respond',
       beOurGuest: 'Be Our Guest',
-      rsvpBefore: 'Please reply before December 1, 2026',
+      rsvpBefore: 'Please reply before December 15, 2026',
       reserveSeats: 'Reserve Your Seats',
 
       // map / contact / closing
@@ -158,7 +158,7 @@
       // rsvp (static)
       kindlyRespond: 'نرجو تأكيد حضوركم',
       beOurGuest: 'كونوا ضيوفنا',
-      rsvpBefore: 'يرجى الرد قبل 1 كانون الأول 2026',
+      rsvpBefore: 'يرجى الرد قبل 15 كانون الأول 2026',
       reserveSeats: 'احجزوا مقاعدكم',
 
       // map / contact / closing
