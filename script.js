@@ -425,12 +425,6 @@ async function submitRSVP(status) {
 
     if (saved) {
         applySuccess(status, seatsParam);
-        const summaryMsg = encodeURIComponent(I18N.t('waSummary', {
-            name: currentGuest.name,
-            status: statusLabel(status),
-            seats: seatsParam
-        }));
-        window.open(`https://wa.me/96170510183?text=${summaryMsg}`, '_blank');
     } else {
         setMessage('saveFailed', 'error');
     }

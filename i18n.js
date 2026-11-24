@@ -95,14 +95,13 @@
       declining: 'Declining...',
       thanksAttending: 'Thank you! Your attendance has been confirmed.',
       thanksDeclined: 'Thank you for letting us know. You will be missed.',
-      saveFailed: 'We could not save your response. Please check your connection and try again, or message us on WhatsApp.',
+      saveFailed: 'We could not save your response. Please check your connection and try again.',
       btnAccept: 'Accept',
       btnDecline: 'Decline',
       btnUpdate: 'Update Attendance',
       btnUpdateDecline: 'Update to Decline',
       seatMax: "You've hit your maximum allowed limit of <strong>{count}</strong>.",
-      seatAllowed: 'Allowed maximum: {count}.',
-      waSummary: 'Wedding RSVP Summary:\nName: {name}\nStatus: {status}\nSeats: {seats}'
+      seatAllowed: 'Allowed maximum: {count}.'
     },
 
     ar: {
@@ -185,14 +184,13 @@
       declining: 'جارٍ تسجيل الاعتذار...',
       thanksAttending: 'شكرًا لكم! تم تأكيد حضوركم.',
       thanksDeclined: 'شكرًا لإعلامنا. سنفتقدكم.',
-      saveFailed: 'تعذّر حفظ ردّكم. يرجى التحقق من الاتصال والمحاولة مجددًا، أو مراسلتنا عبر واتساب.',
+      saveFailed: 'تعذّر حفظ ردّكم. يرجى التحقق من الاتصال والمحاولة مجددًا.',
       btnAccept: 'تأكيد الحضور',
       btnDecline: 'اعتذار',
       btnUpdate: 'تحديث الحضور',
       btnUpdateDecline: 'تغيير إلى الاعتذار',
       seatMax: 'لقد بلغتم الحد الأقصى المسموح: <strong>{count}</strong>.',
-      seatAllowed: 'الحد الأقصى المسموح: {count}.',
-      waSummary: 'ملخص الرد على دعوة الزفاف:\nالاسم: {name}\nالحالة: {status}\nعدد المقاعد: {seats}'
+      seatAllowed: 'الحد الأقصى المسموح: {count}.'
     }
   };
 
